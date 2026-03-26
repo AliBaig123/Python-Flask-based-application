@@ -1,21 +1,21 @@
 pipeline {
     agent any
 
-    // Global environment variables
+  
     environment {
         // Docker Hub image info
-        IMAGE_NAME = "Alibaih123/Python-Flask-based-application"   // Replace with your Docker Hub username & repo
-        IMAGE_TAG  = "latest"             // Can also use version tags like v1.0.0
+        IMAGE_NAME = "Alibaih123/Python-Flask-based-application"  
+        IMAGE_TAG  = "latest"            
 
-        // Deployment server info
-        ROCKY_HOST = "192.182.29.134"      // Replace with Rocky Linux IP
-        ROCKY_USER = "root"         // SSH user on Rocky Linux
+        
+        ROCKY_HOST = "192.182.29.134"      
+        ROCKY_USER = "root"        
     }
 
     stages {
         stage('Pull Code') {
             steps {
-                // Pull latest code from GitHub
+                
                 checkout scm
             }
         }
@@ -31,7 +31,7 @@ pipeline {
 
         stage('Push to Docker Hub') {
             steps {
-                // Login to Docker Hub securely using Jenkins credentials
+                // Login to Docker Hub 
                 withCredentials([usernamePassword(
                     credentialsId: 'docker-hub-credenials', 
                     usernameVariable: 'DOCKER_USER', 
@@ -46,7 +46,7 @@ pipeline {
 
         stage('Deploy to Rocky Linux') {
             steps {
-                // SSH into Rocky Linux and deploy the latest image
+                // SSH into Rocky Linux 
                 sshagent(['rocky-ssh']) {
                     sh """
                     ssh $ROCKY_USER@$ROCKY_HOST '
