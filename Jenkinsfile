@@ -4,7 +4,7 @@ pipeline {
   
     environment {
         // Docker Hub image info
-        IMAGE_NAME = "Alibaih123/Python-Flask-based-application"  
+        IMAGE_NAME = "Alibaih123/python-flask-based-application"  
         IMAGE_TAG  = "latest"            
 
         
@@ -51,9 +51,9 @@ pipeline {
                     sh """
                     ssh $ROCKY_USER@$ROCKY_HOST '
                         docker pull $IMAGE_NAME:$IMAGE_TAG &&
-                        docker stop Python-Flask-based-application || true &&
-                        docker rm Python-Flask-based-application || true &&
-                        docker run -d -p 5000:5000 --name Python-Flask-based-applicaion $IMAGE_NAME:$IMAGE_TAG
+                        docker stop python-flask-based-application || true &&
+                        docker rm python-flask-based-application || true &&
+                        docker run -d -p 5000:5000 --name python-flask-based-applicaion $IMAGE_NAME:$IMAGE_TAG
                     '
                     """
                 }
