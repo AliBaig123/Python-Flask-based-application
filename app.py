@@ -3,7 +3,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Ali DEVOPS Engineer Intern (Dockerized with CICD pipeline with jenkins  Application new code pushed)"
+    return "Ali DEVOPS Engineer Intern (Dockerized with CICD pipeline with jenkins  Application new code Pushed)"
 
 if __name__ == "__main__":
    app.run(host="0.0.0.0", port=5000)
